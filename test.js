@@ -1,6 +1,14 @@
 import {pushWordLeft} from './index.js';
 
-const describe = (result) => {
+const it = (title, testCode) => {
+  try {
+    testCode();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const expect = (result) => {
   return {
     toBe: (expected) => {
       if (result !== expected) {
@@ -11,5 +19,6 @@ const describe = (result) => {
   };
 };
 
-describe(pushWordLeft('apple', 3)).toBe('leapp');
-describe(pushWordLeft('apple', 3)).toBe('apple');
+it('왼쪽으로 count만큼 단어 밀기', () => {
+  expect(pushWordLeft('apple', 3)).toBe('apple');
+});
