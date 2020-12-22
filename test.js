@@ -1,3 +1,5 @@
+import {pushWordLeft} from './index.js';
+
 const describe = (result) => {
   return {
     toBe: (expected) => {
@@ -8,3 +10,6 @@ const describe = (result) => {
     },
   };
 };
+
+describe(pushWordLeft('apple', 3)).toBe('leapp');
+describe(pushWordLeft('apple', 3)).toBe('apple');
