@@ -1,9 +1,11 @@
-import {pushWordLeft} from './index.js';
+import {pushWordLeft} from './index.mjs';
 
-const it = (title, testCode) => {
+const it = (title, testCallback) => {
   try {
-    testCode();
+    testCallback();
+    console.log(`✔ ${title}`);
   } catch (error) {
+    console.log(`❌ ${title}`);
     console.error(error);
   }
 };
@@ -12,9 +14,8 @@ const expect = (result) => {
   return {
     toBe: (expected) => {
       if (result !== expected) {
-        throw new Error('같지 않습니다.');
+        throw new Error(`${result}와 ${expected}가 같지 않습니다.`);
       }
-      console.log('일치합니다.');
     },
   };
 };
